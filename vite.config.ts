@@ -2,13 +2,23 @@ import { resolve } from "path";
 import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
 import ViteComponents, { AntDesignVueResolver } from "vite-plugin-components";
-
+const additionalData = `@import "@m-xushu/global-style-lib/dist/style/_variables.less";`;
+const modifyVars = {
+  hack: `true; @import "${resolve(
+    __dirname,
+    "./src/assets/style/varibles.less"
+  )}";`,
+};
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
     vue(),
     ViteComponents({
-      customComponentResolvers: [AntDesignVueResolver()],
+      customComponentResolvers: [
+        AntDesignVueResolver({
+          importStyle: "less",
+        }),
+      ],
     }),
   ],
   resolve: {
@@ -16,14 +26,14 @@ export default defineConfig({
       "@": resolve(__dirname, "src"),
     },
   },
-  // css: {
-  //   preprocessorOptions: {
-  //     less: {
-  //       // 全局使用less变量，无需引入
-  //       additionalData:
-  //         '@import "@baoxiaohe/lib-components/styles/global/value.less";',
-  //       javascriptEnabled: true,
-  //     },
-  //   },
-  // },
+  css: {
+    preprocessorOptions: {
+      less: {
+        // 全局使用less变量，无需引入
+        additionalData,
+        modifyVars,
+        javascriptEnabled: true,
+      },
+    },
+  },
 });
