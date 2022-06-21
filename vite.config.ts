@@ -29,7 +29,6 @@ export default defineConfig({
   css: {
     preprocessorOptions: {
       less: {
-        // 全局使用less变量，无需引入
         additionalData,
         modifyVars,
         javascriptEnabled: true,

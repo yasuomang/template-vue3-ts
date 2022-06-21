@@ -11,8 +11,11 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "@m-xushu/axios": "^1.0.3",
     "@m-xushu/global-style-lib": "^1.1.4",
     "ant-design-vue": "^3.2.7",
+    "axios": "^0.27.2",
+    "js-cookie": "^3.0.1",
     "pinia": "^2.0.14",
     "vue": "^3.2.25",
     "vue-router": "^4.0.16"
