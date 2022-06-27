@@ -1,4 +1,4 @@
-import { IResponse } from "../common/types";
+import { IResponse } from '../common/types';
 export interface ILoginParams {
   userName: string;
   passWord: string | number;

@@ -1,29 +1,19 @@
-import { resolve } from "path";
-import { defineConfig } from "vite";
-import vue from "@vitejs/plugin-vue";
-import ViteComponents, { AntDesignVueResolver } from "vite-plugin-components";
+import { resolve } from 'path';
+import { defineConfig } from 'vite';
+import vue from '@vitejs/plugin-vue';
 const additionalData = `@import "@m-xushu/global-style-lib/dist/style/_variables.less";`;
 const modifyVars = {
   hack: `true; @import "${resolve(
     __dirname,
-    "./src/assets/style/varibles.less"
+    './src/assets/style/varibles.less'
   )}";`,
 };
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [
-    vue(),
-    ViteComponents({
-      customComponentResolvers: [
-        AntDesignVueResolver({
-          importStyle: "less",
-        }),
-      ],
-    }),
-  ],
+  plugins: [vue()],
   resolve: {
     alias: {
-      "@": resolve(__dirname, "src"),
+      '@': resolve(__dirname, 'src'),
     },
   },
   css: {
@@ -34,5 +24,12 @@ export default defineConfig({
         javascriptEnabled: true,
       },
     },
+  },
+  //启动服务配置
+  server: {
+    host: '0.0.0.0',
+    port: 1234,
+    open: false,
+    https: false,
   },
 });
