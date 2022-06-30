@@ -1,10 +1,9 @@
-import Request from '../index';
+import { HttpMethod } from '../index';
 import { ILoginApi } from './types';
-const http = Request.requestMethod;
 
 const loginApi: ILoginApi = {
   login(params) {
-    return http.post('/login', params);
+    return HttpMethod.post('/login', params);
   },
 };
 export default loginApi;
